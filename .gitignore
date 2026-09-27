@@ -1,0 +1,34 @@
+.venv/
+__pycache__/
+.vscode/
+.env
+*.pyc
+*.pyo
+*.db
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+
+# Large source/training data stays local
+data/raw/
+data/interim/
+data/processed/
+
+# Keep the small production demo slice
+!data/demo/
+!data/demo/**
+
+# Track the production bundle intentionally; use Git LFS if your host enforces size limits
+models/*
+!models/week10_model_bundle.joblib
+!models/model_manifest.json
+
+# Keep result CSVs used by the product; figures are local except curated frontend copies
+reports/figures/
+!reports/results/
+!reports/results/**

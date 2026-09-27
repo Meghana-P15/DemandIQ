@@ -1,0 +1,96 @@
+feature,importance
+numeric__rolling_mean_7,0.7423589694308356
+numeric__lag_14,0.1523269893664986
+numeric__lag_7,0.06298667639007424
+numeric__lag_1,0.020775474572590467
+numeric__transactions,0.008877728840139246
+numeric__lag_28,0.008028099459972264
+numeric__day,0.001953607657270496
+numeric__day_of_week,0.0007476451375516323
+numeric__week_of_year,0.0005037221826211475
+numeric__rolling_mean_28,0.00034404489862773624
+numeric__rolling_mean_14,0.00028510901098000496
+numeric__onpromotion,0.00017564807552956327
+numeric__store_nbr,0.0001221450800158735
+numeric__month,0.00012098185774772095
+numeric__is_weekend,9.537514856602629e-05
+numeric__is_holiday,8.220558394845654e-05
+numeric__cluster,7.86624950689124e-05
+categorical__family_PRODUCE,5.9293612238978674e-05
+categorical__family_GROCERY I,3.294303746746024e-05
+categorical__state_Pichincha,1.1194898805098003e-05
+categorical__type_C,1.0788576660226203e-05
+numeric__dcoilwtico,8.742664313252974e-06
+categorical__family_BEVERAGES,7.858460501449588e-06
+"categorical__family_LIQUOR,WINE,BEER",2.2690631750376654e-06
+categorical__family_CLEANING,1.6542381466664022e-06
+categorical__type_B,1.593773083955141e-06
+categorical__family_BREAD/BAKERY,4.1794039111665013e-07
+categorical__city_Guayaquil,8.311360129281967e-08
+numeric__year,7.543357761668255e-08
+categorical__family_CELEBRATION,0.0
+categorical__family_BABY CARE,0.0
+categorical__family_PREPARED FOODS,0.0
+categorical__family_POULTRY,0.0
+categorical__family_PLAYERS AND ELECTRONICS,0.0
+categorical__family_PET SUPPLIES,0.0
+categorical__family_MEATS,0.0
+categorical__family_PERSONAL CARE,0.0
+categorical__family_MAGAZINES,0.0
+categorical__family_LINGERIE,0.0
+categorical__family_HOME AND KITCHEN II,0.0
+categorical__family_LAWN AND GARDEN,0.0
+categorical__family_LADIESWEAR,0.0
+categorical__family_HOME CARE,0.0
+categorical__family_HOME AND KITCHEN I,0.0
+categorical__family_HOME APPLIANCES,0.0
+categorical__family_GROCERY II,0.0
+categorical__family_HARDWARE,0.0
+categorical__family_AUTOMOTIVE,0.0
+categorical__family_BEAUTY,0.0
+categorical__family_FROZEN FOODS,0.0
+categorical__family_EGGS,0.0
+categorical__family_DAIRY,0.0
+categorical__family_DELI,0.0
+categorical__family_BOOKS,0.0
+categorical__family_SCHOOL AND OFFICE SUPPLIES,0.0
+categorical__city_El Carmen,0.0
+categorical__city_Esmeraldas,0.0
+categorical__city_Ambato,0.0
+categorical__family_SEAFOOD,0.0
+categorical__city_Cayambe,0.0
+categorical__city_Cuenca,0.0
+categorical__city_Daule,0.0
+categorical__city_Babahoyo,0.0
+categorical__state_Imbabura,0.0
+categorical__state_Guayas,0.0
+categorical__state_Esmeraldas,0.0
+categorical__state_El Oro,0.0
+categorical__state_Cotopaxi,0.0
+categorical__state_Chimborazo,0.0
+categorical__state_Bolivar,0.0
+categorical__state_Azuay,0.0
+categorical__city_Santo Domingo,0.0
+categorical__city_Salinas,0.0
+categorical__city_Riobamba,0.0
+categorical__city_Quito,0.0
+categorical__city_Quevedo,0.0
+categorical__city_Puyo,0.0
+categorical__city_Playas,0.0
+categorical__city_Manta,0.0
+categorical__city_Machala,0.0
+categorical__city_Loja,0.0
+categorical__city_Libertad,0.0
+categorical__city_Latacunga,0.0
+categorical__city_Ibarra,0.0
+categorical__city_Guaranda,0.0
+categorical__type_E,0.0
+categorical__type_D,0.0
+categorical__state_Loja,0.0
+categorical__state_Manabi,0.0
+categorical__type_A,0.0
+categorical__state_Los Rios,0.0
+categorical__state_Pastaza,0.0
+categorical__state_Santa Elena,0.0
+categorical__state_Santo Domingo de los Tsachilas,0.0
+categorical__state_Tungurahua,0.0

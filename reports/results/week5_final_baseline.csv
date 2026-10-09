@@ -1,2 +1,0 @@
-selected_model,selected_alpha,final_MAE,final_RMSE,final_R2,cv_mean_MAE,cv_std_MAE,development_rows,final_test_rows
-Ridge,1.0,90.9617383300964,340.54572894985944,0.938838617147407,83.68991920903244,10.931405805657448,2507274,443718

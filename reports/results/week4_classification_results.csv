@@ -1,2 +1,0 @@
-model,Accuracy,Precision,Recall,F1,ROC_AUC,high_demand_threshold,training_rows
-Logistic Regression,0.9595621543412708,0.8955930614158463,0.9827007165166268,0.9371270389123465,0.9951748316850211,184.74,500000

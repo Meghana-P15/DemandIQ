@@ -1,2 +1,0 @@
-model,MAE,RMSE,R2,train_rows,test_rows,train_start,train_end,test_start,test_end
-Linear Regression,91.43884539150173,340.807017882512,0.9387447271241879,2507274,443718,2013-01-29,2016-12-08,2016-12-09,2017-08-15

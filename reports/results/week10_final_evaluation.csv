@@ -1,2 +1,0 @@
-regression_MAE,regression_RMSE,regression_R2,classification_accuracy,classification_precision,classification_recall,classification_F1,classification_ROC_AUC,classification_PR_AUC,high_demand_threshold,probability_threshold
-66.113919508436,262.4816767047137,0.9636650636476806,0.9757030366133446,0.9581217199932284,0.9655660209703216,0.9618294664764218,0.9976023680929076,0.9951790120863208,170.89925,0.6599999999999997

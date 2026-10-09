@@ -2,220 +2,590 @@
 
 **Forecast Demand. Detect Risk. Replenish Smarter.**
 
-DemandIQ is a production-oriented retail demand intelligence platform built from the original 12-week machine-learning project in this repository. The application preserves the research experiments and serves the authentic Week 10 XGBoost model bundle, Week 9 clustering artifacts, Week 11 anomaly outputs, and Week 12 replenishment rules through a modern web product.
+DemandIQ is an end-to-end retail demand intelligence and replenishment decision-support system developed from a 12-week machine-learning project.
 
-## What is real in the demo
+The platform combines demand forecasting, high-demand classification, behavioural segmentation, anomaly detection, explainable AI, replenishment prioritization, API integration, database support, authentication, testing, and a modern web interface.
 
-The web application does not hard-code fake model results. It reads the original project artifacts and runs the saved model for inference. The current temporal evaluation artifact reports:
+---
 
-- Regression MAE: **66.1139**
-- Regression RMSE: **262.4817**
-- Regression R²: **0.9637**
-- Classification F1: **0.9618**
-- Classification ROC-AUC: **0.9976**
-- Classification PR-AUC: **0.9952**
-- High-demand probability threshold: **0.66**
+## Project Overview
 
-The anomaly artifact contains **98,702** detected anomalies across the evaluated history. The final replenishment output contains **1,782** store × family rows for 2017-08-15, including **429 Critical** priorities. These figures are historical experiment outputs, not live business claims.
+DemandIQ transforms historical retail data into practical decision-support signals for retail planners.
 
-## Product surface
+The system combines:
 
-The UI includes a public landing page, demand command center, single-demand forecasting, batch CSV inference, replenishment decision support, anomaly intelligence, behavioural segmentation, model performance, model explainability, and architecture views. A curated demo slice contains 135,432 genuine processed observations from 2017-06-01 through 2017-08-15 so the product can be demonstrated without loading the full multi-million-row feature file on every request.
+- Demand forecasting
+- High-demand classification
+- Behavioural segmentation
+- Demand anomaly detection
+- Explainable AI
+- Replenishment prioritization
+- REST API integration
+- Web application interface
+- Database-backed user and run management
+- Batch inference
+- Authentication
+- Docker-based deployment
 
-## Architecture
+DemandIQ is a **decision-support system**, not an autonomous inventory ordering platform.
+
+---
+
+## Project Evolution
+
+| Week | Work Completed |
+|------|----------------|
+| Week 1 | Data understanding and exploratory data analysis |
+| Week 2 | Data cleaning, validation and feature engineering |
+| Week 3 | Linear Regression baseline |
+| Week 4 | Ridge Regression, Lasso Regression and Logistic Regression |
+| Week 5 | Time-aware cross-validation and model selection |
+| Week 6 | Interpretable Decision Trees |
+| Week 7 | Random Forest regression and classification |
+| Week 8 | XGBoost with early stopping and SHAP explainability |
+| Week 9 | Behavioural segmentation using K-Means, DBSCAN and PCA |
+| Week 10 | Rigorous temporal train-validation-test evaluation |
+| Week 11 | Demand anomaly detection |
+| Week 12 | Replenishment decision support |
+
+---
+
+## DemandIQ Decision Pipeline
+
+```text
+Historical Retail Data
+        |
+        v
+Feature Engineering
+        |
+        v
+------------------------------------------------
+Demand Forecast
+High-Demand Probability
+Behavioural Segmentation
+Demand Anomaly Detection
+------------------------------------------------
+        |
+        v
+Demand Volatility
+        +
+Promotion Signal
+        |
+        v
+Replenishment Priority Score
+        |
+        v
+CRITICAL / HIGH / MEDIUM / LOW
+        |
+        v
+Planner Decision Support
+```
+
+---
+
+## Final Model Performance
+
+The final temporally evaluated XGBoost pipeline reports the following historical experiment results.
+
+### Demand Regression
+
+| Metric | Value |
+|--------|------:|
+| MAE | 66.1139 |
+| RMSE | 262.4817 |
+| R² | 0.9637 |
+
+### High-Demand Classification
+
+| Metric | Value |
+|--------|------:|
+| F1 Score | 0.9618 |
+| ROC-AUC | 0.9976 |
+| PR-AUC | 0.9952 |
+| Probability Threshold | 0.66 |
+
+> These figures are historical experiment outputs and should not be interpreted as live retailer performance claims.
+
+---
+
+## Replenishment Decision Rule
+
+DemandIQ combines multiple signals into a transparent replenishment-priority score:
+
+```text
+0.35 × Demand Score
++ 0.30 × High-Demand Probability
++ 0.15 × Demand Volatility
++ 0.10 × Anomaly Signal
++ 0.10 × Promotion Signal
+```
+
+### Priority Thresholds
+
+| Score | Priority | Action |
+|------|----------|--------|
+| >= 0.75 | CRITICAL | Review / replenish first |
+| >= 0.55 | HIGH | Prioritize replenishment |
+| >= 0.35 | MEDIUM | Monitor closely |
+| < 0.35 | LOW | Normal monitoring |
+
+---
+
+## Final Replenishment Output
+
+The final Week 12 historical decision-support output contains:
+
+- **1,782** store × product-family records
+- **429** Critical-priority records
+- Decision-support date: **2017-08-15**
+
+These outputs come from the historical project dataset and are not live retailer operations.
+
+---
+
+## Anomaly Detection Output
+
+The Week 11 anomaly artifact contains:
+
+- **98,702 detected anomalies**
+
+DemandIQ uses anomaly signals to identify unusual demand spikes or drops that may require planner attention.
+
+---
+
+## Application Features
+
+DemandIQ includes:
+
+- Public landing page
+- Demand command center
+- Single-demand prediction
+- Direct 23-feature inference
+- Batch CSV inference
+- High-demand probability estimation
+- Replenishment priority queue
+- Demand anomaly intelligence
+- Product-family behavioural segmentation
+- Store behavioural segmentation
+- Model performance view
+- XGBoost feature importance
+- SHAP explainability
+- Architecture view
+- User authentication
+- Prediction-run persistence
+- REST API
+- Docker-based deployment
+
+---
+
+## System Architecture
 
 ```text
 Browser / Next.js
         |
         v
 FastAPI /api/v1
-  |       |        |
-  |       |        +--> PostgreSQL (users, runs, predictions)
-  |       +-----------> Result artifacts (metrics, clusters, anomalies, priorities)
-  +-------------------> ML service -> preprocessor -> XGBoost regressor/classifier
+        |
+        +--> PostgreSQL
+        |    |
+        |    +--> Users
+        |    +--> Prediction Runs
+        |    +--> Predictions
+        |
+        +--> Result Artifacts
+        |    |
+        |    +--> Metrics
+        |    +--> Clusters
+        |    +--> Anomalies
+        |    +--> Replenishment Priorities
+        |
+        +--> ML Service
+             |
+             +--> Preprocessor
+             +--> XGBoost Regressor
+             +--> XGBoost Classifier
 ```
 
-The core product uses **PostgreSQL**, not a vector database. DemandIQ currently operates on structured/tabular/time-series data. If a future `Ask DemandIQ` feature searches unstructured reports or operational notes, `pgvector` can be added inside PostgreSQL without introducing a separate vector system prematurely.
+---
 
-## Repository layout
+## Technology Stack
+
+| Layer | Technology |
+|------|------------|
+| Frontend | Next.js, TypeScript |
+| Backend | FastAPI, Python |
+| Machine Learning | scikit-learn, XGBoost, SHAP |
+| Database | PostgreSQL |
+| ORM | SQLAlchemy |
+| Migrations | Alembic |
+| Testing | pytest |
+| Deployment | Docker, Docker Compose |
+
+---
+
+## Repository Structure
 
 ```text
 DemandIQ/
-├── experiments/                 # original Week 1–12 research code (preserved)
+├── experiments/                 # Original Week 1–12 research code
 ├── models/
 │   ├── week10_model_bundle.joblib
 │   └── model_manifest.json
 ├── data/
-│   ├── raw/                     # original data; ignored by Git
-│   ├── processed/               # full feature file; ignored by Git
-│   └── demo/                    # small production demo slice + sample batch CSV
+│   ├── raw/
+│   ├── processed/
+│   └── demo/
 ├── reports/
-│   ├── results/                 # genuine result CSV artifacts
-│   └── figures/                 # original experiment figures
-├── backend/                     # FastAPI + SQLAlchemy application
-├── frontend/                    # Next.js + TypeScript product UI
-├── database/alembic/            # migrations
-├── tests/                       # backend, model and business-logic tests
+│   ├── results/
+│   └── figures/
+├── backend/
+├── frontend/
+├── database/
+│   └── alembic/
+├── tests/
 ├── docker/
 ├── docs/
-└── docker-compose.yml
+├── docker-compose.yml
+└── README.md
 ```
 
-## Model compatibility
+---
 
-The serialized `week10_model_bundle.joblib` was created in the original project environment. The version folders in that environment indicate:
+## Model Input Contract
+
+The final batch inference pipeline expects the following 23 features:
 
 ```text
-scikit-learn 1.9.0
+store_nbr
+family
+city
+state
+type
+cluster
+onpromotion
+transactions
+dcoilwtico
+year
+month
+day
+day_of_week
+week_of_year
+is_weekend
+is_holiday
+lag_1
+lag_7
+lag_14
+lag_28
+rolling_mean_7
+rolling_mean_14
+rolling_mean_28
+```
+
+A valid example batch file is available in:
+
+```text
+data/demo/sample_batch.csv
+```
+
+---
+
+## Model Compatibility
+
+The serialized Week 10 model bundle was created using approximately:
+
+```text
+Python        3.13.x
+scikit-learn  1.9.0
 xgboost       3.4.1
 numpy         2.5.2
 pandas        3.0.5
 joblib        1.6.0
-Python        3.13.x
 ```
 
-Those ML versions are pinned in `backend/requirements.txt`. Do not simply suppress serialization compatibility warnings. If the artifact is migrated later, export/re-save it deliberately and compare predictions against the fixed regression fixture in `tests/test_ml.py`.
+These ML versions are pinned in:
 
-## Quick start with Docker
+```text
+backend/requirements.txt
+```
 
-1. Copy `.env.example` to `.env`.
-2. Replace `JWT_SECRET` and set a PostgreSQL password for any public deployment.
-3. Run:
+Do not ignore model serialization compatibility warnings.
+
+If the model is migrated to another environment, re-save the artifact deliberately and compare predictions against the fixed model regression fixture in the test suite.
+
+---
+
+## Quick Start with Docker
+
+### 1. Create environment file
+
+Copy:
+
+```text
+.env.example
+```
+
+to:
+
+```text
+.env
+```
+
+Update the JWT secret and PostgreSQL password before deployment.
+
+### 2. Start the application
 
 ```bash
 docker compose up --build
 ```
 
-Then open:
+### 3. Open the services
 
-- Frontend: `http://localhost:3000`
-- API: `http://localhost:8000`
-- Swagger/OpenAPI: `http://localhost:8000/docs`
+Frontend:
 
-## Local backend
+```text
+http://localhost:3000
+```
 
-Create a Python 3.13 virtual environment and install:
+API:
+
+```text
+http://localhost:8000
+```
+
+Swagger / OpenAPI:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## Local Backend Setup
+
+Create a Python 3.13 virtual environment.
+
+Install dependencies:
 
 ```bash
 pip install -r backend/requirements.txt
 ```
 
-For a zero-setup local run, if `DATABASE_URL` is not set, the app uses a local SQLite development database. Production should use PostgreSQL.
-
-macOS/Linux:
-
-```bash
-PYTHONPATH=backend uvicorn app.main:app --app-dir backend --reload --port 8000
-```
-
-PowerShell:
+### PowerShell
 
 ```powershell
 $env:PYTHONPATH="backend"
 uvicorn app.main:app --app-dir backend --reload --port 8000
 ```
 
-## Local frontend
+If `DATABASE_URL` is not set, the local development environment may use SQLite.
+
+Production deployment should use PostgreSQL.
+
+---
+
+## Local Frontend Setup
+
+Move into the frontend directory:
 
 ```bash
 cd frontend
+```
+
+Install dependencies:
+
+```bash
 npm install
 ```
 
-Create `frontend/.env.local`:
+Create:
+
+```text
+frontend/.env.local
+```
+
+Add:
 
 ```text
 NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
 ```
 
-Then:
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-## Database migrations
+Then open:
 
-Set `DATABASE_URL`, then run from the repository root:
+```text
+http://localhost:3000
+```
+
+---
+
+## Database Migrations
+
+Set `DATABASE_URL`, then run:
 
 ```bash
 PYTHONPATH=backend alembic upgrade head
 ```
 
-FastAPI also creates missing tables on application startup for local convenience, while Alembic is the intended production migration path.
+Alembic is the intended production migration mechanism.
 
-## API highlights
+---
+
+## API Highlights
 
 | Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/v1/health` | API/model health |
-| GET | `/api/v1/model/info` | exact feature contract and runtime compatibility |
-| GET | `/api/v1/model/performance` | genuine evaluation artifacts |
-| GET | `/api/v1/model/explainability` | real feature importance + SHAP artifact references |
-| POST | `/api/v1/predictions/demand` | demo-history-assisted single inference |
-| POST | `/api/v1/predictions/direct` | direct 23-feature inference |
-| POST | `/api/v1/predictions/batch` | validated CSV inference |
-| GET | `/api/v1/analytics/summary` | dashboard KPIs |
-| GET | `/api/v1/anomalies` | filterable anomaly output |
-| GET | `/api/v1/replenishment` | filterable decision-support queue |
-| GET | `/api/v1/segments` | family/store K-Means + PCA outputs |
-| POST | `/api/v1/auth/register` | create account |
-| POST | `/api/v1/auth/login` | issue signed HS256 bearer token |
-| GET | `/api/v1/auth/me` | inspect authenticated user |
-| GET | `/api/v1/runs` | list persisted prediction runs |
-| GET | `/api/v1/runs/{id}` | inspect a persisted run |
+|--------|----------|---------|
+| GET | `/api/v1/health` | API and model health |
+| GET | `/api/v1/model/info` | Feature contract and model information |
+| GET | `/api/v1/model/performance` | Historical evaluation metrics |
+| GET | `/api/v1/model/explainability` | Feature importance and SHAP references |
+| POST | `/api/v1/predictions/demand` | Single demand prediction |
+| POST | `/api/v1/predictions/direct` | Direct 23-feature inference |
+| POST | `/api/v1/predictions/batch` | Batch CSV inference |
+| GET | `/api/v1/analytics/summary` | Dashboard KPIs |
+| GET | `/api/v1/anomalies` | Detected demand anomalies |
+| GET | `/api/v1/replenishment` | Replenishment priority queue |
+| GET | `/api/v1/segments` | Behavioural segmentation output |
+| POST | `/api/v1/auth/register` | Register a user |
+| POST | `/api/v1/auth/login` | Login and receive token |
+| GET | `/api/v1/auth/me` | Current authenticated user |
+| GET | `/api/v1/runs` | List persisted prediction runs |
+| GET | `/api/v1/runs/{id}` | Inspect a prediction run |
 
-## Batch CSV contract
+---
 
-Batch inference validates the exact 23-column model input contract:
+## Batch CSV Contract
 
-`store_nbr, family, city, state, type, cluster, onpromotion, transactions, dcoilwtico, year, month, day, day_of_week, week_of_year, is_weekend, is_holiday, lag_1, lag_7, lag_14, lag_28, rolling_mean_7, rolling_mean_14, rolling_mean_28`
+Batch inference validates the exact 23-column model input contract.
 
-A valid one-row example is in `data/demo/sample_batch.csv` and is also copied to `frontend/public/sample_batch.csv`.
+A valid one-row example is stored in:
 
-## Tests
+```text
+data/demo/sample_batch.csv
+```
+
+and is also available to the frontend as:
+
+```text
+frontend/public/sample_batch.csv
+```
+
+---
+
+## Testing
+
+Run the backend and model test suite using:
 
 ```bash
 PYTHONPATH=backend pytest tests -q
 ```
 
-The suite currently contains **21 passing tests** covering model loading, the 23-feature contract, a fixed numerical model regression fixture, API health/summary/forecast/batch behavior, run persistence, password/token security helpers, and exact replenishment threshold boundaries (`0.75`, `0.55`, `0.35` plus just-below values). See `docs/VERIFICATION.md` for the executed verification report.
+The project test suite covers:
 
-Frontend CI is configured to run TypeScript checking and a production Next.js build after installing dependencies.
+- Model loading
+- 23-feature contract
+- Fixed numerical regression fixture
+- API health
+- Analytics summary
+- Forecast behavior
+- Batch inference
+- Prediction-run persistence
+- Authentication helpers
+- Token security
+- Replenishment threshold boundaries
 
-## Replenishment decision rule
-
-The Week 12 score is preserved exactly:
+Current project verification reports:
 
 ```text
-0.35 × demand score
-+ 0.30 × high-demand risk
-+ 0.15 × volatility
-+ 0.10 × anomaly signal
-+ 0.10 × promotion score
+21 passing tests
 ```
 
-Thresholds:
+---
 
-- `>= 0.75` → **CRITICAL** — Review / replenish first
-- `>= 0.55` → **HIGH** — Prioritize replenishment
-- `>= 0.35` → **MEDIUM** — Monitor closely
-- `< 0.35` → **LOW** — Normal monitoring
+## Security Notes
 
-## Security notes
+- Never commit `.env`
+- Replace example JWT secrets before public deployment
+- Restrict public batch upload size and row count
+- Do not accept arbitrary model or pickle uploads
+- Use parameterized SQLAlchemy database access
+- Configure allowed CORS origins
+- Use TLS in production
+- Add provider-level rate limiting when deployed publicly
 
-- Never commit `.env`.
-- Replace the example JWT secret before any public deployment.
-- Public batch inference is deliberately limited by file size and row count.
-- The API never accepts arbitrary `.joblib`/pickle model uploads.
-- SQLAlchemy parameterizes database access.
-- CORS origins are configurable.
-- Production deployments should terminate TLS at the hosting platform/reverse proxy and add provider-level rate limiting.
+---
 
-## Limitations
+## Important Limitations
 
-DemandIQ is a portfolio/research-derived system, not an autonomous inventory ordering system. Forecasts and replenishment priorities are decision-support signals. The demo uses historical Favorita-style retail data from the original project and should not be presented as a live retailer. Feature importance and SHAP visualizations explain model behavior but do not establish causality.
+DemandIQ is a research-derived and portfolio-oriented retail decision-support system.
 
-## Future extensions
+The available dataset does not include:
 
-Potential next steps include asynchronous large-batch jobs, object storage for uploads, model registry/monitoring, drift detection, calibrated forecast intervals, retailer-specific authentication/tenancy, and optional PostgreSQL `pgvector` only if semantic document retrieval becomes a real product requirement.
+- Real-time inventory-on-hand
+- Supplier lead times
+- Service-level targets
+- Verified stockout labels
+- Live retailer transactions
+
+Therefore:
+
+- DemandIQ does **not** calculate exact order quantities
+- DemandIQ does **not** claim to predict real stockouts
+- The classifier represents a **high-demand or demand-pressure signal**
+- Replenishment priorities identify store × product-family combinations that may deserve additional planner attention
+
+Feature importance and SHAP explain model behavior but do not prove causality.
+
+---
+
+## Future Extensions
+
+Possible future improvements include:
+
+- Live sales-data ingestion
+- Automated retraining
+- Model monitoring
+- Drift detection
+- Forecast confidence intervals
+- Model registry integration
+- Asynchronous large-batch inference
+- Object storage
+- Retailer-specific authentication and tenancy
+- Inventory-on-hand integration
+- Supplier lead-time integration
+- Service-level optimization
+- Exact replenishment optimization
+- Optional PostgreSQL `pgvector` support for future semantic document search
+
+---
+
+## Final Outcome
+
+DemandIQ transforms historical retail data into:
+
+```text
+Demand Forecasts
+        +
+High-Demand Alerts
+        +
+Behavioural Insights
+        +
+Demand Anomaly Signals
+        +
+Replenishment Priorities
+        |
+        v
+Smarter Planner Decisions
+```
+
+---
+
+## Final Project Statement
+
+**DemandIQ is an end-to-end retail demand intelligence platform that combines machine learning, explainability, anomaly detection, behavioural segmentation, and transparent replenishment-priority rules to support better retail planning decisions.**
+
+### Forecast Demand. Detect Risk. Replenish Smarter.

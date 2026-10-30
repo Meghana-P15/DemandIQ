@@ -1,0 +1,2 @@
+store_nbr,family,city,state,type,cluster,onpromotion,transactions,dcoilwtico,year,month,day,day_of_week,week_of_year,is_weekend,is_holiday,lag_1,lag_7,lag_14,lag_28,rolling_mean_7,rolling_mean_14,rolling_mean_28
+1,AUTOMOTIVE,Quito,Pichincha,D,13,0,1772.0,97.62,2013,1,29,1,5,0,0,3.0,1.0,1.0,0.0,2.571428571428572,2.142857142857143,2.142857142857143

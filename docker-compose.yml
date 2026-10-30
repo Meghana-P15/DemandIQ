@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: demandiq
+      POSTGRES_USER: demandiq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-demandiq_dev}
+    volumes:
+      - demandiq_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demandiq -d demandiq"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    environment:
+      APP_ENV: production
+      DATABASE_URL: postgresql+psycopg://demandiq:${POSTGRES_PASSWORD:-demandiq_dev}@db:5432/demandiq
+      JWT_SECRET: ${JWT_SECRET:-change-this-before-public-deploy}
+      CORS_ORIGINS: http://localhost:3000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  demandiq_pgdata:

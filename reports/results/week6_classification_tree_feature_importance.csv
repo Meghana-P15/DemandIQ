@@ -1,0 +1,96 @@
+feature,importance
+numeric__lag_7,0.9247216545518836
+numeric__lag_1,0.026965998285369618
+numeric__lag_14,0.021140928522892122
+numeric__rolling_mean_7,0.01002283053724942
+numeric__lag_28,0.006094817582424202
+numeric__day,0.002852756300549017
+numeric__month,0.0017594215499193476
+numeric__dcoilwtico,0.0011866079246121753
+numeric__rolling_mean_28,0.0010203588695408676
+numeric__transactions,0.000947925697315259
+numeric__week_of_year,0.0009426304591555059
+numeric__day_of_week,0.0006758135522358541
+"categorical__family_LIQUOR,WINE,BEER",0.0005358385997991068
+numeric__store_nbr,0.0002924981806435641
+numeric__onpromotion,0.0001858459828857111
+categorical__family_HOME CARE,0.00012317716539516867
+categorical__family_PRODUCE,0.00010419245677213583
+numeric__rolling_mean_14,0.00010056697891318798
+numeric__cluster,7.237311805751852e-05
+categorical__family_EGGS,6.64053405511181e-05
+numeric__is_holiday,6.437502449057754e-05
+categorical__type_C,4.0625736800953235e-05
+categorical__family_MEATS,3.964580812374696e-05
+categorical__type_D,2.3516468104868015e-05
+categorical__family_HOME AND KITCHEN I,1.0703167299717652e-05
+categorical__state_Pichincha,8.492139015736462e-06
+categorical__family_AUTOMOTIVE,0.0
+categorical__family_CELEBRATION,0.0
+categorical__family_CLEANING,0.0
+categorical__family_DAIRY,0.0
+categorical__family_BABY CARE,0.0
+categorical__family_PREPARED FOODS,0.0
+categorical__family_POULTRY,0.0
+categorical__family_PLAYERS AND ELECTRONICS,0.0
+categorical__family_PET SUPPLIES,0.0
+categorical__family_MAGAZINES,0.0
+categorical__family_PERSONAL CARE,0.0
+categorical__family_LAWN AND GARDEN,0.0
+categorical__family_LINGERIE,0.0
+categorical__family_HOME AND KITCHEN II,0.0
+categorical__family_HOME APPLIANCES,0.0
+categorical__family_LADIESWEAR,0.0
+categorical__family_DELI,0.0
+categorical__family_FROZEN FOODS,0.0
+categorical__family_GROCERY I,0.0
+categorical__family_GROCERY II,0.0
+categorical__family_HARDWARE,0.0
+categorical__family_BEAUTY,0.0
+categorical__family_BREAD/BAKERY,0.0
+categorical__family_BOOKS,0.0
+categorical__family_BEVERAGES,0.0
+categorical__family_SCHOOL AND OFFICE SUPPLIES,0.0
+categorical__family_SEAFOOD,0.0
+categorical__city_Ambato,0.0
+categorical__city_Babahoyo,0.0
+categorical__city_Esmeraldas,0.0
+categorical__city_Guaranda,0.0
+categorical__city_Guayaquil,0.0
+categorical__city_Ibarra,0.0
+categorical__city_Cayambe,0.0
+categorical__city_Cuenca,0.0
+categorical__city_Daule,0.0
+categorical__city_El Carmen,0.0
+categorical__state_Imbabura,0.0
+categorical__state_Guayas,0.0
+categorical__state_Esmeraldas,0.0
+categorical__state_El Oro,0.0
+categorical__state_Cotopaxi,0.0
+categorical__state_Chimborazo,0.0
+categorical__state_Bolivar,0.0
+categorical__state_Azuay,0.0
+categorical__city_Santo Domingo,0.0
+categorical__city_Salinas,0.0
+categorical__city_Riobamba,0.0
+categorical__city_Quito,0.0
+categorical__city_Quevedo,0.0
+categorical__city_Puyo,0.0
+categorical__city_Playas,0.0
+categorical__city_Manta,0.0
+categorical__city_Machala,0.0
+categorical__city_Loja,0.0
+categorical__city_Libertad,0.0
+categorical__city_Latacunga,0.0
+categorical__type_E,0.0
+categorical__type_A,0.0
+categorical__state_Santo Domingo de los Tsachilas,0.0
+categorical__state_Tungurahua,0.0
+categorical__state_Loja,0.0
+categorical__state_Manabi,0.0
+categorical__type_B,0.0
+categorical__state_Los Rios,0.0
+categorical__state_Pastaza,0.0
+categorical__state_Santa Elena,0.0
+numeric__is_weekend,0.0
+numeric__year,0.0
